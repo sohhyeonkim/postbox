@@ -1,0 +1,17 @@
+.Mailinfo-wrapper {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+}
+.Mailinfo-wrapper label {
+  flex: 1 0 auto;
+  padding: 0.3rem 0.2rem;
+  border: 1px solid red;
+}
+.Mailinfo-wrapper input[type="text"],
+[type="email"] {
+  width: 70%;
+  padding: 0.3rem 0.2rem;
+  float: right;
+}
