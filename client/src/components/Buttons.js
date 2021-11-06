@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 function Buttons({ props }) {
+  const tempSave = () => {
+    console.log("임시저장하기");
+  };
+  const sendMail = () => {
+    console.log("전송하기");
+  };
   return (
     <>
       <StyledDiv>
-        <StyledButton>임시저장</StyledButton>
-        <StyledButton send>전송하기</StyledButton>
+        <StyledButton onClick={tempSave}>임시저장</StyledButton>
+        <StyledButton send onClick={sendMail}>
+          전송하기
+        </StyledButton>
       </StyledDiv>
     </>
   );
