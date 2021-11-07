@@ -4,6 +4,7 @@ module.exports = {
     const tomorrow = new Date(today.setDate(today.getDate() + 1));
     return tomorrow;
   },
+
   // getTimeStamp: (range) => {
   //   const today = new Date();
   //   let nowYear = today.getFullYear();

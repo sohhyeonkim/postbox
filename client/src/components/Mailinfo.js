@@ -15,16 +15,26 @@ function Mailinfo() {
     { value: "6개월 후", label: "6개월 후" },
     { value: "1년 후", lable: "1년 후" },
   ];
-  const [reservedDate, setStartDate] = useState(() => getTomorrow());
+  const startDate = getTomorrow();
   registerLocale("ko", ko);
 
   const [emailInfo, setEmailInfo] = useState({
     title: "",
     receiver: "",
   });
-
+  const [reservDate, setReservDate] = useState("");
+  console.log(reservDate);
   const handleChange = (e) => {
     setEmailInfo({ ...emailInfo, [e.target.name]: e.target.value });
+  };
+
+  const customStyles = {
+    container: (provided, state) => ({
+      ...provided,
+      flex: "1 0 auto",
+      border: "3px solid green",
+      display: "inline-block",
+    }),
   };
   return (
     <>
@@ -56,15 +66,23 @@ function Mailinfo() {
               onChange={handleChange}
             />
           </label>
-          <Select options={options} />
-          <DatePicker
-            selected={reservedDate}
-            onChange={(date) => setStartDate(date)}
-            locale="ko"
-            dateFormat="yyyy-MM-dd"
-            minDate={subDays(new Date(), -1)}
-            maxDate={addDays(new Date(), 365)}
-          />
+          <label>
+            전송날짜
+            <span></span>
+            <Select
+              options={options}
+              styles={customStyles}
+              onChange={setReservDate}
+            />
+            <DatePicker
+              selected={startDate}
+              onChange={setReservDate}
+              locale="ko"
+              dateFormat="yyyy-MM-dd"
+              minDate={subDays(new Date(), -1)}
+              maxDate={addDays(new Date(), 365)}
+            />
+          </label>
         </form>
       </div>
     </>
