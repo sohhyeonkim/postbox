@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Buttons({ props }) {
+function Buttons() {
   const tempSave = () => {
     console.log("임시저장하기");
   };

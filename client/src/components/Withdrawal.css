@@ -1,0 +1,18 @@
+.Withdrawal-container {
+  max-width: 400px;
+  padding: 2em 3em;
+  margin: 200px auto;
+  border: 1px solid black;
+}
+.Withdrawal-container .form-withdrawal {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Withdrawal-container input.input-withdrawal-pw {
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0.25em 1em;
+}

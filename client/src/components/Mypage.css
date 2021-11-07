@@ -97,10 +97,23 @@ body {
   border-radius: 3px;
   background-color: lightgray;
 }
-.Mypage-container button.btn-submit:hover {
+.Mypage-container button.btn-submit:hover,
+button.btn-withdrawal {
   cursor: pointer;
 }
 .Mypage-container button.btn-submit:active {
   background-color: palevioletred;
   color: white;
+}
+.Mypage-container button.btn-withdrawal {
+  border: none;
+  padding: 0.55em 1em;
+  border-radius: 3px;
+  background-color: whitesmoke;
+  color: gray;
+}
+.Mypage-container button.btn-withdrawal:active {
+  background-color: lightgray;
+  color: white;
+  border-top: 1px solid whitesmoke;
 }

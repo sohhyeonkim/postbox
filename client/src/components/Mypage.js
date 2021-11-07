@@ -2,6 +2,7 @@ import styled from "styled-components";
 import "./Mypage.css";
 import emptyImg from "./resources/empty.png";
 import { useState } from "react";
+
 function Mypage() {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
@@ -71,6 +72,9 @@ function Mypage() {
                 </span>
                 <button type="button" className="btn-submit">
                   변경하기
+                </button>
+                <button type="button" className="btn-withdrawal">
+                  탈퇴하기
                 </button>
               </form>
             </div>
