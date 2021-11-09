@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-function Buttons() {
+function Buttons({ handleConfirmModal, handlePreviewModal }) {
   const tempSave = () => {
-    console.log("임시저장하기");
+    handlePreviewModal();
   };
   const sendMail = () => {
-    console.log("전송하기");
+    handleConfirmModal();
   };
   return (
     <>
       <StyledDiv>
-        <StyledButton onClick={tempSave}>임시저장</StyledButton>
+        <StyledButton onClick={tempSave}>미리보기</StyledButton>
         <StyledButton send onClick={sendMail}>
           전송하기
         </StyledButton>
@@ -32,7 +32,6 @@ const StyledButton = styled.button`
     cursor: pointer;
   }
   font-size: 1em;
-  /* margin: 1em; */
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
