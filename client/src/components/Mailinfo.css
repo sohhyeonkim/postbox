@@ -15,16 +15,16 @@ body {
   align-items: center;
 }
 
-.Mailinfo-wrapper .checkbox-tome {
-  justify-content: space-around;
-  align-items: center;
-}
 .Mailinfo-wrapper .Mailinfo-input {
   flex: 1 1 auto;
   padding: 0.45rem 0.2rem;
-  justify-content: space-around;
 }
 
 .Mailinfo-wrapper .Mailinfo-input-title {
   margin-left: 1.8rem;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block;
 }
