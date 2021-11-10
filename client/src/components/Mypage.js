@@ -1,13 +1,63 @@
 import styled from "styled-components";
 import "./Mypage.css";
 import emptyImg from "./resources/empty.png";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+const { availablePw, matchingPw } = require("./funcs/userFuncs");
 function Mypage() {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  const [passwords, setPasswords] = useState({
+    newPassword: "",
+    matchingPassword: "",
+  });
+  const [confirmedPassword, setConfrimedPassword] = useState("");
+  const [isAvailable, setIsAvailable] = useState("");
+  const [isMatching, setIsMatching] = useState("");
+
+  const handleChange = (e) => {
+    setPasswords({ ...passwords, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    let timer;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      if (availablePw(passwords.newPassword)) {
+        setIsAvailable("사용가능한 비밀번호입니다");
+        setConfrimedPassword(passwords.newPassword);
+      } else if (
+        !availablePw(passwords.newPassword) &&
+        passwords.newPassword !== ""
+      ) {
+        setIsAvailable("비밀번호는 10자리 이상 15자리 이하여야합니다");
+      }
+    }, 500);
+  }, [passwords.newPassword]);
+
+  useEffect(() => {
+    let timer;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      if (
+        matchingPw(confirmedPassword, passwords.matchingPassword) &&
+        passwords.matchingPassword !== ""
+      ) {
+        setIsMatching("비밀번호가 일치합니다");
+      } else if (
+        !matchingPw(confirmedPassword, passwords.matchingPassword) &&
+        passwords.matchingPassword !== ""
+      ) {
+        setIsMatching("비밀번호가 일치하지 않습니다");
+      }
+    }, 500);
+  }, [confirmedPassword, passwords.matchingPassword]);
+
   return (
     <>
       <div className="Mypage-container">
@@ -55,20 +105,40 @@ function Mypage() {
             >
               <form className="form-renewPw">
                 <p className="p-renew-pw">새로운 비밀번호</p>
-                <input type="password" className="input-renew-pw" required />
-                <span className="span-alert unavailable">
-                  비밀번호는 8~15자리 이상이어야합니다
-                </span>
-                <span className="span-alert available">
-                  사용가능한 비밀번호입니다
+                <input
+                  type="password"
+                  className="input-renew-pw"
+                  name="newPassword"
+                  value={passwords.newPassword}
+                  onChange={handleChange}
+                  required
+                />
+                <span
+                  className={
+                    isAvailable === "사용가능한 비밀번호입니다"
+                      ? "span-alert available"
+                      : "span-alert unavailable"
+                  }
+                >
+                  {isAvailable}
                 </span>
                 <p className="p-renew-pw">비밀번호 확인</p>
-                <input type="password" className="input-renew-pw" required />
-                <span className="span-alert unavailable">
-                  비밀번호가 일치하지 않습니다
-                </span>
-                <span className="span-alert available">
-                  비밀번호가 일치합니다
+                <input
+                  type="password"
+                  className="input-renew-pw"
+                  name="matchingPassword"
+                  value={passwords.matchingPassword}
+                  onChange={handleChange}
+                  required
+                />
+                <span
+                  className={
+                    isMatching === "비밀번호가 일치합니다"
+                      ? "span-alert available"
+                      : "span-alert unavailable"
+                  }
+                >
+                  {isMatching}
                 </span>
                 <button type="button" className="btn-submit">
                   변경하기
