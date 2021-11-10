@@ -2,6 +2,7 @@ import styled from "styled-components";
 import "./Mypage.css";
 import emptyImg from "./resources/empty.png";
 import { useState, useEffect } from "react";
+import Withdrawal from "./Withdrawal";
 const { availablePw, matchingPw } = require("./funcs/userFuncs");
 function Mypage() {
   const [toggleState, setToggleState] = useState(1);
@@ -74,7 +75,9 @@ function Mypage() {
             <span className="tab-divider">|</span>
             <span
               className={
-                toggleState === 2 ? "tab-text active-tabs" : "tab-text"
+                toggleState === 2 || toggleState === 3
+                  ? "tab-text active-tabs"
+                  : "tab-text"
               }
               onClick={() => toggleTab(2)}
             >
@@ -143,10 +146,21 @@ function Mypage() {
                 <button type="button" className="btn-submit">
                   변경하기
                 </button>
-                <button type="button" className="btn-withdrawal">
+                <button
+                  type="button"
+                  className="btn-withdrawal"
+                  onClick={() => toggleTab(3)}
+                >
                   탈퇴하기
                 </button>
               </form>
+            </div>
+            <div
+              className={
+                toggleState === 3 ? "active-content" : "inactive-content"
+              }
+            >
+              <Withdrawal />
             </div>
           </div>
         </div>
